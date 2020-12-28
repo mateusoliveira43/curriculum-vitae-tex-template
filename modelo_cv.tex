@@ -1,0 +1,141 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+
+\usepackage{geometry}
+\geometry{
+    textwidth=190mm,	
+    textheight=267mm,	
+	inner=10mm,		
+	outer=10mm,		
+	top=10mm,
+	bottom=20mm
+}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{fontawesome}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks = true,
+	urlcolor = cyan,
+	linkcolor = black,
+}
+
+%%%%%%%%%%%%%%%%%% - Alterações de Uso - %%%%%%%%%%%%%%%%%%
+\newcommand{\profissional}{Nome}
+\newcommand{\idade}{Idade}
+\newcommand{\Endereco}{Endereço}
+\newcommand{\telefone}{Número de telefone}
+\newcommand{\email}{email@email.com} 
+\newcommand{\data}{\today}
+\newcommand{\sobre}{
+    Texto sobre você.
+    \vspace{3\baselineskip}
+}
+%%%%%%%%%%%%%%% - Fim de Alterações de Uso - %%%%%%%%%%%%%%
+
+\setlength{\fboxrule}{2pt}
+\setlength{\fboxsep}{0pt}
+
+\fancyhead{} % Cabeçalho: reset
+\fancyfoot{} % Rodapé: reset
+\fancyfoot[C]{Página \thepage \ de \pageref{ultimaPagina}} % Rodapé: centro
+\fancyfoot[R]{Feito com \LaTeX} % Rodapé: direito
+\fancyfoot[L]{Atualizado em \data} % Rodapé: esquerdo
+\renewcommand{\headrulewidth}{0pt} % Espessura da linha de cabeçalho
+\renewcommand{\footrulewidth}{0.4pt} % Espessura da linha de rodapé
+\pagestyle{fancy} % Define o estilo da página
+
+\newcommand{\criaSecao}[4][0]{
+    \noindent
+	\begin{minipage}{0.16\linewidth}
+		\large{\textbf{#2}}
+		\vspace{#3\baselineskip}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.79\linewidth}
+		#4
+		\ifnum0#1>0 { \hrule {\ } } \fi
+	\end{minipage}
+	\vspace{\baselineskip}
+}
+
+\begin{document}
+	
+	\noindent
+	\fbox{
+	\hspace*{-3.35\fboxrule}
+	\begin{minipage}{0.3\linewidth}
+		\includegraphics[width=\linewidth]{img/profile.png}
+	\end{minipage}
+	\hspace*{-3.35\fboxrule}
+	}
+	\hfill
+	\begin{minipage}{0.65\linewidth}
+		\Huge{\bf \profissional, \idade}\\\vspace{-1.75\baselineskip}
+		
+		\noindent\rule{\textwidth}{1.5pt} {\ }\\\vspace{-1.8\baselineskip}
+		
+		\large{
+		\faMapMarker \ \Endereco \\
+		\begin{minipage}{0.5\linewidth}
+			\faWhatsapp \ \telefone
+		\end{minipage}
+		\begin{minipage}{0.5\linewidth}
+			\faEnvelope \ \email
+		\end{minipage}
+		\begin{minipage}{0.5\linewidth}
+			\faLinkedinSquare \ \href{https://www.linkedin.com}{\texttt{/linkedin-do-usuário}}
+		\end{minipage}
+		\begin{minipage}{0.5\linewidth}
+			\faGithub \ \href{https://github.com}{\texttt{/github-do-usuário}}
+		\end{minipage}
+		\faLink \ \href{https://www.overleaf.com/}{\texttt{outra-rede-social}}\\
+		\vfill
+		\textbf{Sobre}:\sobre
+		}
+	\end{minipage}
+	\vspace{\baselineskip}
+	
+%%%%%%%%%%%%%%%%%%%%% - Corpo do CV - %%%%%%%%%%%%%%%%%%%%%
+    \criaSecao[1]{Educação}{1}{
+		\textit{Curso}, Instituição, Local \hfill ano - ano \\
+    }
+    
+    \criaSecao[1]{Experiência}{2}{
+        \textit{Cargo}, Instituição, Local \hfill mês ano - atualmente \\
+        \textbf{Atividades}: Atividades\\
+    }
+    
+    \criaSecao[1]{Linguagens de programação e ferramentas}{2}{
+        \large{\bf
+			\begin{minipage}{0.33\linewidth}
+				Linguagem\\
+				Linguagem\\
+				\vspace{\baselineskip}
+			\end{minipage}
+			\begin{minipage}{0.33\linewidth}
+				Ferramenta\\
+				\vspace{2\baselineskip}
+			\end{minipage}
+			\begin{minipage}{0.33\linewidth}
+				\vspace{3\baselineskip}
+			\end{minipage}
+		}
+    }
+	
+	\criaSecao{Idiomas}{2}{
+	    \large{
+			\begin{minipage}{0.5\linewidth}
+				\textbf{Língua}: nível \\
+			\end{minipage}
+			\begin{minipage}{0.5\linewidth}
+				\textbf{Língua}: nível \\
+			\end{minipage}
+		}
+	}
+%%%%%%%%%%%%%%%%%% - Fim do Corpo do CV - %%%%%%%%%%%%%%%%%
+    \label{ultimaPagina}
+\end{document}
