@@ -3,13 +3,14 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
+\usepackage[skins,breakable]{tcolorbox}
 
-\usepackage{geometry}	
+\usepackage{geometry}
 \geometry{
-    textwidth=190mm,	
-    textheight=267mm,	
-	inner=10mm,		
-	outer=10mm,		
+    textwidth=190mm,
+    textheight=267mm,
+	inner=10mm,
+	outer=10mm,
 	top=10mm,
 	bottom=20mm
 }
@@ -49,17 +50,16 @@
 \pagestyle{fancy} % Sets the page style
 
 \newcommand{\createSection}[4][0]{
-    \noindent
-	\begin{minipage}{0.16\linewidth}
-		\large{\textbf{#2}}
-		\vspace{#3\baselineskip}
-	\end{minipage}
-	\hfill
-	\begin{minipage}{0.79\linewidth}
-		#4
+    \begin{tcolorbox}[
+        blanker,
+        breakable,
+        title=\begin{minipage}{0.16\linewidth}\large{\textbf{#2}}\vspace{-#3\baselineskip}\end{minipage},
+        coltitle=black,
+        leftupper=0.21\linewidth,
+    ]
+        #4
 		\ifnum0#1>0 { \hrule {\ } } \fi
-	\end{minipage}
-	\vspace{\baselineskip}
+    \end{tcolorbox}
 }
 
 \begin{document}
@@ -75,9 +75,9 @@
 	\hfill
 	\begin{minipage}{0.65\linewidth}
 		\Huge{\bf \professional, \age}\\\vspace{-1.75\baselineskip}
-		
+
 		\noindent\rule{\textwidth}{1.5pt} {\ }\\\vspace{-1.8\baselineskip}
-		
+
 		\large{
 		\faMapMarker \ \address \\
 		\begin{minipage}{0.5\linewidth}
@@ -98,18 +98,18 @@
 		}
 	\end{minipage}
 	\vspace{\baselineskip}
-	
+
 %%%%%%%%%%%%%%%%%%%%%% - CV's Body - %%%%%%%%%%%%%%%%%%%%%%
-    \createSection[1]{Education}{1}{
+    \createSection[1]{Education}{2}{
 		\textit{Course}, Institute, Place \hfill year - year \\
 	}
-	
+
 	\createSection[1]{Experience}{2}{
 	    \textit{Role}, Institute, Place \hfill month year - currently \\
 	    \textbf{Activities}: Activities\\
 	}
-    
-    \createSection[1]{Programming languages and tools}{2}{
+
+    \createSection[1]{Programming languages and tools}{4}{
         \large{\bf
 			\begin{minipage}{0.33\linewidth}
 				Language\\
@@ -125,7 +125,7 @@
 			\end{minipage}
 		}
     }
-	
+
 	\createSection{Languages}{2}{
 	    \large{
 			\begin{minipage}{0.5\linewidth}

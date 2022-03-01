@@ -3,13 +3,14 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[brazil]{babel}
+\usepackage[skins,breakable]{tcolorbox}
 
 \usepackage{geometry}
 \geometry{
-    textwidth=190mm,	
-    textheight=267mm,	
-	inner=10mm,		
-	outer=10mm,		
+    textwidth=190mm,
+    textheight=267mm,
+	inner=10mm,
+	outer=10mm,
 	top=10mm,
 	bottom=20mm
 }
@@ -28,7 +29,7 @@
 \newcommand{\idade}{Idade}
 \newcommand{\Endereco}{Endereço}
 \newcommand{\telefone}{Número de telefone}
-\newcommand{\email}{email@email.com} 
+\newcommand{\email}{email@email.com}
 \newcommand{\data}{\today}
 \newcommand{\sobre}{
     Texto sobre você.
@@ -49,21 +50,20 @@
 \pagestyle{fancy} % Define o estilo da página
 
 \newcommand{\criaSecao}[4][0]{
-    \noindent
-	\begin{minipage}{0.16\linewidth}
-		\large{\textbf{#2}}
-		\vspace{#3\baselineskip}
-	\end{minipage}
-	\hfill
-	\begin{minipage}{0.79\linewidth}
-		#4
+    \begin{tcolorbox}[
+        blanker,
+        breakable,
+        title=\begin{minipage}{0.16\linewidth}\large{\textbf{#2}}\vspace{-#3\baselineskip}\end{minipage},
+        coltitle=black,
+        leftupper=0.21\linewidth,
+    ]
+        #4
 		\ifnum0#1>0 { \hrule {\ } } \fi
-	\end{minipage}
-	\vspace{\baselineskip}
+    \end{tcolorbox}
 }
 
 \begin{document}
-	
+
 	\noindent
 	\fbox{
 	\hspace*{-3.35\fboxrule}
@@ -75,9 +75,9 @@
 	\hfill
 	\begin{minipage}{0.65\linewidth}
 		\Huge{\bf \profissional, \idade}\\\vspace{-1.75\baselineskip}
-		
+
 		\noindent\rule{\textwidth}{1.5pt} {\ }\\\vspace{-1.8\baselineskip}
-		
+
 		\large{
 		\faMapMarker \ \Endereco \\
 		\begin{minipage}{0.5\linewidth}
@@ -98,18 +98,18 @@
 		}
 	\end{minipage}
 	\vspace{\baselineskip}
-	
+
 %%%%%%%%%%%%%%%%%%%%% - Corpo do CV - %%%%%%%%%%%%%%%%%%%%%
-    \criaSecao[1]{Educação}{1}{
+    \criaSecao[1]{Educação}{2}{
 		\textit{Curso}, Instituição, Local \hfill ano - ano \\
     }
-    
+
     \criaSecao[1]{Experiência}{2}{
         \textit{Cargo}, Instituição, Local \hfill mês ano - atualmente \\
         \textbf{Atividades}: Atividades\\
     }
-    
-    \criaSecao[1]{Linguagens de programação e ferramentas}{2}{
+
+    \criaSecao[1]{Linguagens de programação e ferramentas}{4}{
         \large{\bf
 			\begin{minipage}{0.33\linewidth}
 				Linguagem\\
@@ -125,7 +125,7 @@
 			\end{minipage}
 		}
     }
-	
+
 	\criaSecao{Idiomas}{2}{
 	    \large{
 			\begin{minipage}{0.5\linewidth}
